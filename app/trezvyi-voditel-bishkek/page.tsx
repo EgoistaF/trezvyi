@@ -12,8 +12,7 @@ import { primaryService } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 const pageTitle = "Трезвый водитель в Бишкеке 24/7";
-const pageDescription =
-  "Закажите трезвого водителя в Бишкеке: водитель приедет к вам и доставит вас домой на вашем автомобиле. Работаем круглосуточно, стоимость от 800 сом.";
+const pageDescription = `Закажите трезвого водителя в Бишкеке: водитель приедет к вам и доставит вас домой на вашем автомобиле. Работаем круглосуточно, стоимость ${primaryService.price}.`;
 const canonicalUrl = `${siteConfig.url}/trezvyi-voditel-bishkek`;
 
 export const metadata: Metadata = {
@@ -56,9 +55,9 @@ const pageJsonLd = {
       provider: { "@id": `${siteConfig.url}/#business` },
       offers: {
         "@type": "Offer",
-        price: "800",
+        price: String(primaryService.priceFrom),
         priceCurrency: "KGS",
-        description: "Стоимость от 800 сом; итоговая цена согласовывается до поездки.",
+        description: `Стоимость ${primaryService.price}; итоговая цена согласовывается до поездки.`,
       },
     },
     {
@@ -89,7 +88,7 @@ export default function SoberDriverPage() {
             <ArrowLeft className="h-4 w-4" />
             На главную
           </Link>
-          <div className="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
             <div>
               <p className="text-sm font-extrabold text-green-700">Выездная услуга · 24/7</p>
               <h1 className="text-balance mt-3 text-4xl font-black tracking-[-0.04em] text-slate-950 md:text-5xl">Трезвый водитель в Бишкеке</h1>
@@ -99,7 +98,7 @@ export default function SoberDriverPage() {
             </div>
             <div className="rounded-2xl bg-white p-6 text-slate-950 shadow-[0_12px_32px_rgba(15,23,42,0.07)]">
               <p className="text-sm font-extrabold text-green-700">Стоимость</p>
-              <p className="mt-2 text-4xl font-black tracking-[-0.04em] text-green-700 sm:text-5xl">от 800 сом</p>
+              <p className="mt-2 text-4xl font-black tracking-[-0.04em] text-green-700 sm:text-5xl">{primaryService.price}</p>
               <p className="mt-3 text-sm leading-6 text-slate-600">Итоговую цену согласуем до начала поездки.</p>
               <div className="mt-6"><ContactActions /></div>
             </div>

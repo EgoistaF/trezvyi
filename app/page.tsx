@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { ServiceAreaSection } from "@/components/service-area-section";
 import { MobileActionBar } from "@/components/mobile-action-bar";
-import { services } from "@/lib/services";
+import { primaryService, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 const homePageJsonLd = {
@@ -34,7 +34,7 @@ const homePageJsonLd = {
       },
       image: `${siteConfig.url}/images/driver.jpg`,
       logo: `${siteConfig.url}/favicon-96x96.png`,
-      priceRange: "от 800 KGS",
+      priceRange: `от ${primaryService.priceFrom} KGS`,
       areaServed: { "@type": "City", name: siteConfig.city },
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
@@ -56,6 +56,11 @@ const homePageJsonLd = {
         itemListElement: services.map((service) => ({
           "@type": "Offer",
           priceCurrency: "KGS",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            minPrice: service.priceFrom,
+            priceCurrency: "KGS",
+          },
           itemOffered: { "@type": "Service", name: service.title },
         })),
       },

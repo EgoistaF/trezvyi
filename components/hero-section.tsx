@@ -1,6 +1,8 @@
 import Image from "next/image";
-import { Check, MessageCircle, Phone } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, MessageCircle, Phone } from "lucide-react";
 
+import { primaryService } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
@@ -25,7 +27,7 @@ export function HeroSection() {
 
           <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
             <span className="text-sm font-extrabold uppercase tracking-wide text-slate-500">Стоимость</span>
-            <strong className="text-3xl font-black tracking-[-0.04em] text-green-700 sm:text-4xl">от 800 сом</strong>
+            <strong className="text-3xl font-black tracking-[-0.04em] text-green-700 sm:text-4xl">{primaryService.price}</strong>
           </div>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -57,6 +59,14 @@ export function HeroSection() {
               </li>
             ))}
           </ul>
+
+          <Link
+            href={primaryService.href ?? "/trezvyi-voditel-bishkek"}
+            className="mt-6 inline-flex items-center gap-2 text-base font-extrabold text-green-700 underline-offset-4 hover:underline"
+          >
+            Подробнее об услуге
+            <ArrowRight className="h-4 w-4" strokeWidth={2.6} />
+          </Link>
         </div>
 
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-100 shadow-[0_20px_45px_rgba(15,23,42,0.12)] sm:aspect-[16/10] lg:aspect-[4/3]">
