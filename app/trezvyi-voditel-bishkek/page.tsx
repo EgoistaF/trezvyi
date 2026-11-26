@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MobileActionBar } from "@/components/mobile-action-bar";
 import { soberDriverFaq } from "@/lib/faq";
+import { serviceAreaJsonLd } from "@/lib/jsonld";
 import { primaryService } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -51,7 +52,7 @@ const pageJsonLd = {
       description: pageDescription,
       url: `${siteConfig.url}/trezvyi-voditel-bishkek`,
       serviceType: "Трезвый водитель",
-      areaServed: { "@type": "City", name: siteConfig.city },
+      areaServed: serviceAreaJsonLd,
       provider: { "@id": `${siteConfig.url}/#business` },
       offers: {
         "@type": "Offer",

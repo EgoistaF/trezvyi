@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { ServiceAreaSection } from "@/components/service-area-section";
 import { MobileActionBar } from "@/components/mobile-action-bar";
+import { postalAddressJsonLd, serviceAreaJsonLd } from "@/lib/jsonld";
 import { primaryService, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -36,7 +37,8 @@ const homePageJsonLd = {
       image: `${siteConfig.url}/images/driver.jpg`,
       logo: `${siteConfig.url}/favicon-96x96.png`,
       priceRange: `от ${primaryService.priceFrom} KGS`,
-      areaServed: { "@type": "City", name: siteConfig.city },
+      address: postalAddressJsonLd,
+      areaServed: serviceAreaJsonLd,
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: [
